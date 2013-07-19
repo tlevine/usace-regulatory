@@ -18,6 +18,9 @@ def public_notice_list(html):
         'notices': _notices(html),
     }
 
+def _chunk_da_list(da_list):
+    return []
+
 def _notices(html):
     da_list = html.xpath('//div[@class="da_list"]')[0]
 
