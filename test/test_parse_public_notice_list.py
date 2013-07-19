@@ -13,8 +13,7 @@ chunk1 = next(chunker)
 
 def test_count():
     'The correct number of notices should be returned.'
-    observed = p.public_notice_list(nap1)
-    pass
+    n.assert_equal(len(list(p._notices(nap1))), 5)
 
 def test_chunk_da_list_count():
     'The da_list should be chunked into five things.'
