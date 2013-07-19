@@ -30,3 +30,9 @@ def test_expiration_date_raw():
 
 def test_description():
     n.assert_equal(p._description(chunk0), 'Approximately 0.75 nautical miles east of the Indian River Inlet, near Rehoboth Beach, Sussex County, Delaware.')
+
+def test_notice_href():
+    n.assert_equal(p._notice_href(chunk1), '/Missions/Regulatory/PublicNotices/tabid/4660/Article/8996/2012-1055.aspx')
+
+def test_attachment_href():
+    n.assert_equal(p._attachment_href(chunk0), '/Portals/39/docs/regulatory/publicnotices/Public%20Notice%202012-0699-39.pdf')
