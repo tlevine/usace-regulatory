@@ -2,17 +2,6 @@ import datetime
 import lxml.html
 import re
 
-_WEB_COLUMNS = [
-    'permitApplicationNumber',
-    'permitApplicationUrl',
-
-    '_description',
-    'expirationDate',
-
-    'publicNoticeUrl',
-    'drawingsUrl',
-]
-
 def public_notice_list(html):
     return {
         'notices': _notices(html),
