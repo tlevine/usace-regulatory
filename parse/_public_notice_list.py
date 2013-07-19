@@ -29,7 +29,16 @@ def _chunk_da_list(html):
             content.append(subcontent)
 
 def _permit_application_number(chunk):
-    return unicode(chunk[0].text_content())
+    return chunk[0].text_content()
+
+def _posted_date_raw(chunk):
+    return None
+
+def _expiration_date_raw(chunk):
+    return chunk[1].xpath('em/text()')[0].replace('Expiration date: ', '')
+
+def _description(chunk):
+    return None
 
 def _notices(html):
     da_list = html.xpath('//div[@class="da_list"]')[0]
