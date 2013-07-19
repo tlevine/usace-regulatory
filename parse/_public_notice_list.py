@@ -38,7 +38,7 @@ def _expiration_date_raw(chunk):
     return chunk[1].xpath('em/text()')[0].replace('Expiration date: ', '')
 
 def _description(chunk):
-    return None
+    return re.sub(r'^[^:]+: ', '', chunk[1].xpath('text()')[0]).rstrip()
 
 def _notices(html):
     da_list = html.xpath('//div[@class="da_list"]')[0]
