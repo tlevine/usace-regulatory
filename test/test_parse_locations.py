@@ -9,7 +9,8 @@ observed = parse.locations(html)
 
 def test_schema():
     'A row should contain the fields `division`, `district` and `subdomain`.'
-    n.assert_equal(set(observed[0].keys()), {'division', 'district', 'subdomain'})
+    n.assert_equal(set(observed[0].keys()), {'text', 'href', 'districts'})
+    n.assert_equal(set(observed[0]['districts'][0].keys()), {'text', 'href'})
 
 def test_district_count():
     'The correct number of districts should be returned.'
