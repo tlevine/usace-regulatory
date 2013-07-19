@@ -15,6 +15,10 @@ def test_count():
     'The correct number of notices should be returned.'
     n.assert_equal(len(list(p.public_notice_list(nap1)['notices'])), 5)
 
+def test_current_page():
+    n.assert_equal(p._current_page(nap1), 1)
+    n.assert_equal(p._current_page(da_list), 4)
+
 def test_chunk_da_list_count():
     'The da_list should be chunked into five things.'
     observed = p._chunk_da_list(da_list)
