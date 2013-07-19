@@ -1,9 +1,10 @@
+import os
 import nose.tools as n
 import lxml.html
 
 import parse
 
-html = lxml.html.parse(os.path.join('fixtures_parse_locations', 'Locations.aspx')).getroot()
+html = lxml.html.parse(os.path.join('fixtures', 'parse_locations', 'Locations.aspx')).getroot()
 observed = parse.locations(html)
 
 def test_schema():
