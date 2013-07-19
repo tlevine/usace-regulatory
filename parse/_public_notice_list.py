@@ -40,8 +40,11 @@ def _expiration_date_raw(chunk):
 def _description(chunk):
     return re.sub(r'^[^:]+: ', '', chunk[1].xpath('text()')[0]).rstrip()
 
-def _notice_url(chunk):
+def _notice_href(chunk):
     return chunk[0].xpath('@href')[0]
+
+def _attachment_href(chunk):
+    return chunk[4].xpath('descendant::span[@class="da_relatedlist_item"]/a/@href')[0]
 
 def _notices(html):
     da_list = html.xpath('//div[@class="da_list"]')[0]
