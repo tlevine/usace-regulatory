@@ -28,6 +28,9 @@ def _chunk_da_list(html):
         else:
             content.append(subcontent)
 
+def _permit_application_number(chunk):
+    return unicode(chunk[1].text_content())
+
 def _notices(html):
     da_list = html.xpath('//div[@class="da_list"]')[0]
 
