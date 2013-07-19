@@ -15,4 +15,4 @@ def test_count():
 def test_chunk_da_list():
     'The da_list should be chunked into five things.'
     observed = p._chunk_da_list(da_list)
-    n.assert_equal(len(observed), 5)
+    n.assert_equal(len(list(observed)), 5)

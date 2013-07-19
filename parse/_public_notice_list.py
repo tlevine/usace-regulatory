@@ -18,8 +18,15 @@ def public_notice_list(html):
         'notices': _notices(html),
     }
 
-def _chunk_da_list(da_list):
-    return []
+def _chunk_da_list(html):
+    subcontents = html.xpath('//div[@class="da_list"]/br[position()=last()]/following-sibling::*')
+    print subcontents
+    content = []
+    for subcontent in subcontents:
+        if subcontent.tag == 'hr':
+            yield content
+        else:
+            content.append(subcontent)
 
 def _notices(html):
     da_list = html.xpath('//div[@class="da_list"]')[0]
