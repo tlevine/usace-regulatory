@@ -13,4 +13,4 @@ def test_schema():
 
 def test_district_count():
     'The correct number of districts should be returned.'
-    n.assert_equal(len(set([district['division'] for district in observed])), 9)
+    n.assert_equal(len(observed), 9)
