@@ -32,7 +32,7 @@ def _permit_application_number(chunk):
     return chunk[0].text_content()
 
 def _posted_date_raw(chunk):
-    return None
+    return chunk[1].xpath('text()')[0].split(':')[0]
 
 def _expiration_date_raw(chunk):
     return chunk[1].xpath('em/text()')[0].replace('Expiration date: ', '')
