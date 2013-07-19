@@ -16,6 +16,8 @@ _WEB_COLUMNS = [
 def public_notice_list(html):
     return {
         'notices': _notices(html),
+        'current_page': _current_page(html),
+        'last_page': _last_page(html),
     }
 
 def _chunk_da_list(html):
