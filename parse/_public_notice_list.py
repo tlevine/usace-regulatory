@@ -20,11 +20,14 @@ def public_notice_list(html):
 
 def _chunk_da_list(html):
     subcontents = html.xpath('//div[@class="da_list"]/br[position()=last()]/following-sibling::*')
-    print subcontents
     content = []
     for subcontent in subcontents:
+        print subcontent.tag, subcontent.xpath('*')
         if subcontent.tag == 'hr':
             yield content
+            content = []
+        elif len(subcontent.xpath('*')) == 0:
+            continue
         else:
             content.append(subcontent)
 
