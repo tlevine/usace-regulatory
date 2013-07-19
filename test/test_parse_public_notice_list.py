@@ -19,6 +19,10 @@ def test_current_page():
     n.assert_equal(p._current_page(nap1), 1)
     n.assert_equal(p._current_page(da_list), 4)
 
+def test_last_page():
+    n.assert_equal(p._last_page(nap1), 7)
+    n.assert_equal(p._last_page(da_list), 7)
+
 def test_chunk_da_list_count():
     'The da_list should be chunked into five things.'
     observed = p._chunk_da_list(da_list)
