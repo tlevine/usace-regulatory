@@ -3,3 +3,6 @@ def public_notice_list(html):
 
 def locations(html):
     return []
+
+def public_notice_pdf():
+    pass
