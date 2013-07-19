@@ -22,7 +22,6 @@ def _chunk_da_list(html):
     subcontents = html.xpath('//div[@class="da_list"]/br[position()=last()]/following-sibling::*')
     content = []
     for subcontent in subcontents:
-        print subcontent.tag, subcontent.xpath('*')
         if subcontent.tag == 'hr':
             yield content
             content = []
@@ -47,7 +46,7 @@ def _notice_href(chunk):
     return chunk[0].xpath('@href')[0]
 
 def _attachment_href(chunk):
-    return chunk[4].xpath('descendant::span[@class="da_relatedlist_item"]/a/@href')[0]
+    return chunk[2].xpath('descendant::a/@href')[0]
 
 def _notices(html):
     da_list = html.xpath('//div[@class="da_list"]')[0]
