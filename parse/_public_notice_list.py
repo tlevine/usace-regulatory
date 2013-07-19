@@ -62,3 +62,6 @@ def _notices(html):
 
 def _current_page(html):
     return int(html.xpath('//a[@class="dig_pager_button dig_pager_current"]/span/text()')[0])
+
+def _last_page(html):
+    return int(html.xpath('//a[@class="dig_pager_button" or @class="dig_pager_button dig_pager_current"][position()=last()]/span/text()')[0])
