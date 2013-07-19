@@ -14,10 +14,16 @@ def test_count():
     observed = p.public_notice_list(nap1)
     pass
 
-def test_chunk_da_list():
+def test_chunk_da_list_count():
     'The da_list should be chunked into five things.'
     observed = p._chunk_da_list(da_list)
     n.assert_equal(len(list(observed)), 5)
+
+def test_chunk_da_list_chunksize():
+    'Each chunk should have three elements.'
+    observed = p._chunk_da_list(da_list)
+    for o in observed:
+        n.assert_equal(len(list(o)), 3)
 
 def test_permit_application_number():
     n.assert_equal(p._permit_application_number(chunk0), '2012-699')
