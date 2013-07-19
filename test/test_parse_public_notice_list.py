@@ -23,6 +23,9 @@ def test_last_page():
     n.assert_equal(p._last_page(nap1), 7)
     n.assert_equal(p._last_page(da_list), 7)
 
+def test_keys():
+    n.assert_equal(set(p.public_notice_list(nap1).keys()), {'notices', 'current_page', 'last_page'})
+
 def test_chunk_da_list_count():
     'The da_list should be chunked into five things.'
     observed = p._chunk_da_list(da_list)
