@@ -51,6 +51,9 @@ def _notices(html):
             'description': _description(chunk),
         }
 
+def _pages(html):
+    return []
+
 def _current_page(html):
     return int(html.xpath('//a[@class="dig_pager_button dig_pager_current"]/span/text()')[0])
 
