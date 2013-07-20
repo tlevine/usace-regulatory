@@ -3,6 +3,7 @@ import nose.tools as n
 import lxml.html
 
 import parse
+import parse._locations as p
 
 html = lxml.html.parse(os.path.join('fixtures', 'parse_locations', 'Locations.aspx')).getroot()
 observed = parse.locations(html)
@@ -28,3 +29,8 @@ def test_data():
        'href': u'http://www.nwd.usace.army.mil',
        'text': u'Northwestern Division'
     })
+
+def test_anchor_stripping():
+    'Text should be stripped.'
+    observed = p._anchor(lxml.html.fromstring('<a href="abc">  \t watermelon  \r  </a>'))
+    n.assert_equal(observed['text'], 'watermelon')
