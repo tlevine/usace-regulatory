@@ -10,7 +10,7 @@ def _anchor(anchor):
     # subdomain = unicode(anchor.xpath('@href')[0]).split('.')[1]
     return {
         'href': unicode(anchor.xpath('@href')[0]),
-        'text': unicode(anchor.text_content())
+        'text': unicode(anchor.text_content().strip())
     }
 
 def locations(html):
