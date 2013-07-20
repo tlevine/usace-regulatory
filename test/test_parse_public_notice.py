@@ -21,11 +21,11 @@ def test_attachment_href():
 
 def test_description():
     observed = p._description(nap1)
-    member = '''Philadelphia Hyatt Regency Hotel & Marina - This site is  90 feet south of the entrance to the Hyatt Regency Hotel on North Columbus Boulevard.  Proposed work at this location includes the installation of a 24' x 36' floating dock with four (4) 24 inch steel piles to anchor the dock, an 80' x 5' gangway with handrails and a landing platform off the existing bulkhead supported by four (4) 16 inch steel piles. '''
+    member = '''handrails to connect the landing area to the floating dock.'''
     n.assert_in(member, observed)
 
     observed = p._description(mvn1)
-    member = '''sed project consists of the excavation and deposition of fill to construct residential lots, including subsurface drainage/sewer, roadways for ingress/egress, detention and retention ponds.  Approxim'''
+    member = '''Approximately 10,550 cubic yards of earthen fill will be'''
     n.assert_in(member, observed)
 
 def test_notice_href():
