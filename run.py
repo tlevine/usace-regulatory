@@ -7,6 +7,8 @@ from urllib2 import urlopen
 from urllib import urlretrieve
 import lxml.html
 
+import requests
+
 import parse
 
 def get(url, cachedir = 'downloads'):
@@ -29,8 +31,21 @@ def get(url, cachedir = 'downloads'):
 
     return lxml.html.parse(local_file)
 
+SKIPPED_DISTRICTS = {
+    'http://www.lrp.usace.army.mil',
+    'http://www.mvm.usace.army.mil',
+    'http://www.lrb.usace.army.mil',
+    'http://www.lre.usace.army.mil',
+    'http://www.mvr.usace.army.mil',
+}
+
 if __name__ == '__main__':
     for division in parse.locations(get('http://www.usace.army.mil/Locations.aspx')):
         for district in division['districts']:
-            print re.sub(r'.usace.army.mil.*$', '.usace.army.mil', district['href'])
-            # http://www.mvn.usace.army.mil/Missions/Regulatory/PublicNotices.aspx
+            domain = re.sub(r'.usace.army.mil.*$', '.usace.army.mil', district['href'])
+            path = '/Missions/Regulatory/PublicNotices.aspx'
+            if domain in SKIPPED_DISTRICTS:
+                continue
+            print domain
+            print domain + path
+            print parse.public_notice_list(get(domain + path))

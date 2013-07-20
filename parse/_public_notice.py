@@ -17,3 +17,12 @@ def _notice_href(html):
 def _attachment_href(html):
     return html.xpath('//span[@class="da_noticerelated_item"][img]/a/@href')[0]
 
+def public_notice(html):
+    return {
+    #   'permit_application_number': _permit_application_number(html),
+        'posted_date': _posted_date_raw(html),
+        'expiration_date': _expiration_date_raw(html),
+        'notice_href': _notice_href(html),
+        'attachment_href': _attachment_href(html),
+        'description': _description(html),
+    }
