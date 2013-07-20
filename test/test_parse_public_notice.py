@@ -27,3 +27,6 @@ def test_description():
     observed = p._description(mvn1)
     member = '''sed project consists of the excavation and deposition of fill to construct residential lots, including subsurface drainage/sewer, roadways for ingress/egress, detention and retention ponds.  Approxim'''
     n.assert_in(member, observed)
+
+def test_notice_href():
+    n.assert_equal(p._notice_href(mvn1), '/Missions/Regulatory/PublicNotices/tabid/9321/Article/16212/mvn-2013-1386-cu.aspx')
