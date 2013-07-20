@@ -30,3 +30,6 @@ def test_description():
 
 def test_notice_href():
     n.assert_equal(p._notice_href(mvn1), '/Missions/Regulatory/PublicNotices/tabid/9321/Article/16212/mvn-2013-1386-cu.aspx')
+
+def test_no_nbsp():
+    n.assert_not_in(u'\xa0', p._description(mvn1))
