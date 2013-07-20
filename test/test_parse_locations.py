@@ -34,3 +34,7 @@ def test_anchor_stripping():
     'Text should be stripped.'
     observed = p._anchor(lxml.html.fromstring('<a href="abc">  \t watermelon  \r  </a>'))
     n.assert_equal(observed['text'], 'watermelon')
+
+def test_weird_li():
+    '"Far East District" should be in there.'
+    n.assert_equal(observed[4]['districts'][1], 'Far East District')
