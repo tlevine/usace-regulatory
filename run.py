@@ -32,4 +32,5 @@ def get(url, cachedir = 'downloads'):
 if __name__ == '__main__':
     for division in parse.locations(get('http://www.usace.army.mil/Locations.aspx')):
         for district in division['districts']:
-            print district
+            print re.sub(r'.usace.army.mil.*$', '.usace.army.mil', district['href'])
+            # http://www.mvn.usace.army.mil/Missions/Regulatory/PublicNotices.aspx
