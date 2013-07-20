@@ -52,10 +52,11 @@ def _notices(html):
         }
 
 def _pages(html):
-    return []
+    dig_pager = html.cssselect('.dig_pager')[0]
+    return dig_pager.xpath('descendant::a[@class="dig_pager_button" or @class="dig_pager_button dig_pager_current"]/@href')
 
 def _current_page(html):
-    return int(html.xpath('//a[@class="dig_pager_button dig_pager_current"]/span/text()')[0])
+    return int(html.xpath('//a[@class="dig_pager_button dig_pager_current"]/span/text()')[0]) - 1
 
 def _last_page(html):
-    return int(html.xpath('//a[@class="dig_pager_button" or @class="dig_pager_button dig_pager_current"][position()=last()]/span/text()')[0])
+    return int(html.xpath('//a[@class="dig_pager_button" or @class="dig_pager_button dig_pager_current"][position()=last()]/span/text()')[0]) - 1
