@@ -6,6 +6,7 @@ import parse._public_notice_list as p
 
 nap1 = lxml.html.parse(os.path.join('fixtures', 'parse_public_notice_list', 'nap-2013-07-19.html')).getroot()
 da_list = lxml.html.parse(os.path.join('fixtures', 'parse_public_notice_list', 'nap-2013-07-19-da_list.html')).getroot()
+mvp = lxml.html.parse(os.path.join('fixtures', 'parse_public_notice_list', 'mvp.html')).getroot()
 
 chunker = p._chunk_da_list(da_list)
 chunk0 = next(chunker)
@@ -67,3 +68,8 @@ def test_pages():
         "http://www.nap.usace.army.mil/Missions/Regulatory/PublicNotices/tabid/4660/Page/7/Default.aspx",
     ]
     n.assert_list_equal(observed, expected)
+
+def test_no_pages():
+    n.assert_list_equal(p._pages(mvp), ['http://www.mvp.usace.army.mil/Missions/Regulatory/PublicNotices.aspx'])
+    n.assert_list_equal(p._current_page(mvp), 0)
+    n.assert_list_equal(p._last_page(mvp), 1)
