@@ -29,7 +29,7 @@ def get(url, cachedir = 'downloads'):
        print 'Downloading and saving %s' % url
        urlretrieve(url, filename = local_file)
 
-    return lxml.html.parse(local_file)
+    return lxml.html.parse(local_file).getroot()
 
 SKIPPED_DISTRICTS = {
     'http://www.lrp.usace.army.mil',
@@ -37,6 +37,26 @@ SKIPPED_DISTRICTS = {
     'http://www.lrb.usace.army.mil',
     'http://www.lre.usace.army.mil',
     'http://www.mvr.usace.army.mil',
+    'http://www.mvk.usace.army.mil',
+    'http://www.aed.usace.army.mil',
+    'http://www.lrb.usace.army.mil',
+    'http://www.lre.usace.army.mil',
+    'http://www.nan.usace.army.mil',
+    'http://www.nao.usace.army.mil',
+    'http://www.nau.usace.army.mil',
+    'http://www.nwk.usace.army.mil',
+    'http://www.nwo.usace.army.mil',
+    'http://www.nws.usace.army.mil',
+    'http://www.nww.usace.army.mil',
+    'http://www.pof.usace.army.mil',
+    'http://www.poj.usace.army.mil',
+    'http://www.saw.usace.army.mil',
+    'http://www.spa.usace.army.mil',
+    'http://www.spk.usace.army.mil',
+    'http://www.spl.usace.army.mil',
+    'http://www.swf.usace.army.mil',
+    'http://www.swg.usace.army.mil',
+    'http://www.tam.usace.army.mil',
 }
 
 if __name__ == '__main__':
