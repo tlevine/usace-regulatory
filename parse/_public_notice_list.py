@@ -52,11 +52,20 @@ def _notices(html):
         }
 
 def _pages(html):
-    dig_pager = html.cssselect('.dig_pager')[0]
-    return dig_pager.xpath('descendant::a[@class="dig_pager_button" or @class="dig_pager_button dig_pager_current"]/@href')
+    dig_pagers = html.cssselect('.dig_pager')
+    if len(dig_pagers) > 0:
+        return dig_pagers[0].xpath('descendant::a[@class="dig_pager_button" or @class="dig_pager_button dig_pager_current"]/@href')
+    else:
+        return [filter(lambda href: href.split('PublicNotices.aspx')[-1] == '', html.xpath('//a/@href'))[0]]
 
 def _current_page(html):
-    return int(html.xpath('//a[@class="dig_pager_button dig_pager_current"]/span/text()')[0]) - 1
+    if len(html.cssselect('.dig_pager')) > 0:
+        return int(html.xpath('//a[@class="dig_pager_button dig_pager_current"]/span/text()')[0]) - 1
+    else:
+        return 0
 
 def _last_page(html):
-    return int(html.xpath('//a[@class="dig_pager_button" or @class="dig_pager_button dig_pager_current"][position()=last()]/span/text()')[0]) - 1
+    if len(html.cssselect('.dig_pager')) > 0:
+        return int(html.xpath('//a[@class="dig_pager_button" or @class="dig_pager_button dig_pager_current"][position()=last()]/span/text()')[0]) - 1
+    else:
+        return 0

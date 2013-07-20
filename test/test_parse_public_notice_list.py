@@ -71,5 +71,5 @@ def test_pages():
 
 def test_no_pages():
     n.assert_list_equal(p._pages(mvp), ['http://www.mvp.usace.army.mil/Missions/Regulatory/PublicNotices.aspx'])
-    n.assert_list_equal(p._current_page(mvp), 0)
-    n.assert_list_equal(p._last_page(mvp), 1)
+    n.assert_equal(p._current_page(mvp), 0)
+    n.assert_equal(p._last_page(mvp), 0)
