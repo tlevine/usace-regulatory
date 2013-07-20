@@ -3,10 +3,10 @@ import lxml.html
 import re
 
 def _posted_date_raw(html):
-    return html.xpath('//div[@class="da_body"]/p/em[@class="da_black"]/text()')[0].replace('Posted: ', '')
+    return html.xpath('//div[@class="da_body"]/p/em[@class="da_black"]/text()')[0].split(': ')[-1]
 
 def _expiration_date_raw(html):
-    return html.xpath('//div[@class="da_body"]/em/text()')[0].replace('Posted: ', '')
+    return html.xpath('//div[@class="da_body"]/em/text()')[0].split(': ')[-1]
 
 def _description(html):
     return re.sub(r'^[^:]+: ', '', html[1].xpath('text()')[0]).rstrip()
