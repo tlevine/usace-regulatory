@@ -7,7 +7,7 @@ from urllib2 import urlopen
 from urllib import urlretrieve
 import lxml.html
 
-import requests
+from dumptruck import DumpTruck
 
 import parse
 
@@ -60,12 +60,18 @@ SKIPPED_DISTRICTS = {
 }
 
 if __name__ == '__main__':
+    dt = DumpTruck(dbname = 'usace.db')
+    dt.create_table({'permit_application_number': 'abcd'}, 'notice')
+    dt.create_index(['permit_application_number'], 'notice')
     for division in parse.locations(get('http://www.usace.army.mil/Locations.aspx')):
         for district in division['districts']:
             domain = re.sub(r'.usace.army.mil.*$', '.usace.army.mil', district['href'])
             path = '/Missions/Regulatory/PublicNotices.aspx'
             if domain in SKIPPED_DISTRICTS:
                 continue
-            print domain
-            print domain + path
-            print parse.public_notice_list(get(domain + path))
+
+            pn_list = None
+            while pn_list == None or pn_list['last_page'] > pn_list['current_page']:
+                pn_list =  parse.public_notice_list(get(domain + path))
+                dt.upsert(list(pn_list['notices']), 'notice')
+
