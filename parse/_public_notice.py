@@ -15,5 +15,5 @@ def _notice_href(html):
     return html.xpath('//div[@class="da_body"]/p/strong/a/@href')[0].split('.usace.army.mil')[-1]
 
 def _attachment_href(html):
-    return chunk[2].xpath('descendant::a/@href')[0]
+    return html.xpath('//span[@class="da_noticerelated_item"][img]/a/@href')[0]
 

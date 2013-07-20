@@ -16,7 +16,7 @@ def test_expiration_date_raw():
     n.assert_equal(p._expiration_date_raw(mvn1), '8/11/2013')
 
 def test_attachment_href():
-    n.assert_equal(p._attachment_href(nap1), '/Portals/39/docs/regulatory/publicnotices/Public%20Notice%202013-0510-76.pdf')
+    n.assert_equal(p._attachment_href(nap1), '/Portals/39/docs/regulatory/publicnotices/Public Notice 2013-0510-76.pdf')
     n.assert_equal(p._attachment_href(mvn1), '/Portals/56/docs/regulatory/publicnotices/2013_1386_jpnall.pdf')
 
 def test_description():
